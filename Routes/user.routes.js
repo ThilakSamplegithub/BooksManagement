@@ -4,6 +4,21 @@ const jwt=require("jsonwebtoken")
 const {blackListModel}=require("../Models/blackList.model")
 const { userModel } = require("../Models/users.model")
 const userRouter=Router()
+const validatePassword=(password)=>{
+    if(password.length<8){
+       return false
+    }
+    if(!/[A-Z]/.test(password)){
+      return false
+    }
+    if(!/[0-9]/.test(password)){
+        return false
+    }
+    if(!/[!@#$%^&*()_+=-]/.test(password)){
+        return false
+    }
+    return true
+}
 userRouter.post("/register",async(req,res)=>{
    try{
 const {pass,name,email,city,age}=req.body
