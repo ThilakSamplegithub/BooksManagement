@@ -1,8 +1,9 @@
 const {Router}=require("express")
 const booksRouter=Router()
-const booksModel=require("../Models/books.model")
+const {booksModel}=require("../Models/books.model")
 booksRouter.post("/add",async(req,res)=>{
 try{
+    console.log(req.body)
   const book=await booksModel.create(req.body)
   console.log(book)
   res.status(200).send({msg:"Book added","addedBook":book})

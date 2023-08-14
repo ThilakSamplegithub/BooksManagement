@@ -10,6 +10,9 @@ const {pass,name,email,city,age}=req.body
 const user=await userModel.findOne({email})
 console.log(user)
 if(!user?.email){
+    if(!validatePassword(pass)){
+        return res.status(200).send({msg:"Not strong password"})
+    }
     bcrypt.hash(pass,5,async(err,hashed)=>{
         if(err){
             res.send("please register again")

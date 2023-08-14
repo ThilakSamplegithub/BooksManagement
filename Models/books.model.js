@@ -5,5 +5,5 @@ const bookSchema=mongoose.Schema({
     author:{type:String,required:true},
     publishing_year:{type:Number,required:true}
 },{versionKey:false})
-const booksModel=mongoose.model("BOOks",bookSchema)
+const booksModel=mongoose.model("BOOk",bookSchema)
 module.exports={booksModel}
